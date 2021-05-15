@@ -13,7 +13,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'nova-conta',
+    path: 'cadastro',
     component: CadastroComponent,
   },
   {
@@ -30,4 +30,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule {}
