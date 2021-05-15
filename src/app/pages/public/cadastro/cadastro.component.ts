@@ -16,8 +16,9 @@ export class CadastroComponent implements OnInit {
   checkRadio: boolean = true;
   placeholder: string = 'Digite o curso que leciona';
   user: Usuario = {};
-  typeUser = '';
-  textButton = 'Cadastrar'
+  textButton = 'Cadastrar';
+  typeUser = 'Professor';
+  colspan = 2;
 
 
   constructor(
@@ -83,6 +84,7 @@ export class CadastroComponent implements OnInit {
 
   limpar() {
     this.user = {};
+    this.typeUser = 'Professor';
   }
 
   cancelar(){

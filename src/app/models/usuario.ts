@@ -5,4 +5,6 @@ export interface Usuario {
   nome?: string;
   tipo?: number;
   curso?: string;
+  idade?: number;
+  formacao?: string
 }

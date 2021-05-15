@@ -11,17 +11,26 @@
       <tbody>
         <tr>
           <td scope="row">
-            <div class="form-group">
-              <label for="id">Id:</label>
+            <label for="category">Tipo de usuário:</label><br />
+            <div>
               <input
-                type="text"
-                [value]=""
-                name="id"
-                id="id"
-                class="form-control"
-                [(ngModel)]="user.id"
-                disabled
+                type="radio"
+                id="category-1"
+                name="tipo"
+                value="1"
+                checked
+                (click)="checkRadio = true; radioCheck()"
               />
+              <label for="category-1">&nbsp;Professor</label><br />
+
+              <input
+                type="radio"
+                id="category-2"
+                name="tipo"
+                value="2"
+                (click)="checkRadio = false; radioCheck()"
+              />
+              <label for="category-2">&nbsp;Aluno</label>
             </div>
           </td>
           <td>
@@ -41,32 +50,21 @@
           </td>
         </tr>
         <tr>
-          <td scope="row">
-            <label for="category">Tipo de usuário:</label><br />
-            <div>
-              <input
-                type="radio"
-                id="category-1"
-                name="tipo"
-                value="1"
-                (click)="checkRadio = true; radioCheck()"
-                [(ngModel)]="user.tipo"
-                checked
-              />
-              <label for="category-1">&nbsp;Professor</label><br />
-
-              <input
-                type="radio"
-                id="category-2"
-                name="tipo"
-                value="2"
-                (click)="checkRadio = false; radioCheck()"
-                [(ngModel)]="user.tipo"
-              />
-              <label for="category-2">&nbsp;Aluno</label>
-            </div>
+          <td scope="row" *ngIf="typeUser === 'Aluno'">
+            <label for="idade">Idade:</label>
+            <input
+            type="number"
+            name="idade"
+            min="17"
+            max="80"
+            id="idade"
+            class="form-control"
+            placeholder="Digite a sua idade"
+            [(ngModel)]="user.idade"
+            required
+          />
           </td>
-          <td>
+          <td colspan="2" *ngIf="typeUser === 'Professor'">
             <div class="form-group">
               <label for="curso">Curso:</label>
               <input
@@ -79,17 +77,32 @@
                 [(ngModel)]="user.curso"
                 required
               />
-              <datalist id="courses">
-                <option>PHP</option>
-                <option>Java</option>
-                <option>Node.js</option>
-                <option>Angular</option>
-                <option>Python</option>
-                <option>REST-API</option>
-                <option>Mongo DB</option>
-              </datalist>
             </div>
           </td>
+          <td colspan="1" *ngIf="typeUser === 'Aluno'">
+            <div class="form-group">
+              <label for="curso">Curso:</label>
+              <input
+                type="curso"
+                name="curso"
+                id="curso"
+                class="form-control"
+                [placeholder]="placeholder"
+                list="courses"
+                [(ngModel)]="user.formacao"
+                required
+              />
+            </div>
+          </td>
+          <datalist id="courses">
+            <option>PHP</option>
+            <option>Java</option>
+            <option>Node.js</option>
+            <option>Angular</option>
+            <option>Python</option>
+            <option>REST-API</option>
+            <option>Mongo DB</option>
+          </datalist>
         </tr>
         <tr>
           <td>
@@ -126,7 +139,7 @@
     </table>
     <div class="btn-first float-left">
       <button
-        type="button"
+        type="reset"
         class="btn btn-secondary btn-form"
         (click)="limpar()"
       >
