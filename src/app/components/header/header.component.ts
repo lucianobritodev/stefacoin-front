@@ -23,4 +23,10 @@ export class HeaderComponent implements OnInit {
   showHeader() {
     return this.authService.isAuthenticated();
   }
+
+  logout() {
+    return this.authService.logout();
+    /* localStorage.clear();
+    window.location.reload(); */
+  }
 }
