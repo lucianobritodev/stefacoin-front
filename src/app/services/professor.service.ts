@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Mensagem } from '../models/mensagem';
 import { Professor } from '../models/professor';
 
-const URL = 'http://localhost:3000/stefanini/professor';
+const URL_PROFESSOR = 'http://localhost:3000/stefanini/professor';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class ProfessorService {
 
   // #pegabandeira
   listar(filtro: Partial<Professor>): Observable<Professor[]> {
-    return this.httpClient.get<Professor[]>(URL, {
+    return this.httpClient.get<Professor[]>(URL_PROFESSOR, {
       params: filtro,
     });
   }
@@ -22,10 +22,12 @@ export class ProfessorService {
   obter() {}
 
   incluir(professor: Professor): Observable<Mensagem> {
-    return this.httpClient.post<Mensagem>(URL, professor);
+    return this.httpClient.post<Mensagem>(URL_PROFESSOR, professor);
   }
 
-  alterar() {}
+  alterar(professor: Professor): Observable<Mensagem> {
+    return this.httpClient.post<Mensagem>(URL_PROFESSOR, professor);
+  }
 
   excluir() {}
 }
