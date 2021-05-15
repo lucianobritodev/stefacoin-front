@@ -1,2 +1,3 @@
-export interface Professor {
+import { Usuario } from './usuario';
+export class Professor implements Usuario {
 }
