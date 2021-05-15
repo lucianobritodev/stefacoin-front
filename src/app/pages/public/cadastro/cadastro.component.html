@@ -18,8 +18,9 @@
                 id="category-1"
                 name="tipo"
                 value="1"
+                (click)="checkRadio = true; radioCheck();"
+                [(ngModel)]="user.tipo"
                 checked
-                (click)="checkRadio = true; radioCheck()"
               />
               <label for="category-1">&nbsp;Professor</label><br />
 
@@ -28,7 +29,8 @@
                 id="category-2"
                 name="tipo"
                 value="2"
-                (click)="checkRadio = false; radioCheck()"
+                (click)="checkRadio = false; radioCheck();"
+                [(ngModel)]="user.tipo"
               />
               <label for="category-2">&nbsp;Aluno</label>
             </div>
